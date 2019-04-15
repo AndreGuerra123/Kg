@@ -5,7 +5,7 @@ LABEL       KOTLIN_VERSION="1.3.30"
 LABEL       GRADLE_VERSION="5.3.1"
 LABEL       JDK="8"
 
-RUN         apt-get install sudo
+RUN         apk add sudo
 RUN         adduser --disabled-password --gecos '' docker
 RUN         adduser docker sudo
 RUN         echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
