@@ -1,4 +1,4 @@
-FROM        sgrio/java:jdk_8_alpine
+FROM        gradle:5.3.1-jdk8-alpine
 
 LABEL       MAINTAINER="Andre Guerra <guerraandre@hotmail.com>"
 LABEL       KOTLIN_VERSION="1.3.30"
@@ -7,9 +7,6 @@ LABEL       JDK="8"
 
 ENV         KOTLIN_VERSION=1.3.30
 ENV         KOTLIN_HOME=/usr/local/kotlin
-
-ENV         GRADLE_VERSION=5.3.1
-ENV         GRADLE_HOME=/usr/local/gradle
 
 RUN         cd  /tmp && \
             wget -q -k "https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip"  && \
@@ -22,6 +19,5 @@ RUN         cd  /tmp && \
             apk del wget ca-certificates curl openssl && \
             rm -rf /tmp/* /var/cache/apk/*
 
-RUN 
 
 RUN         rm -f /var/cache/apk/*
