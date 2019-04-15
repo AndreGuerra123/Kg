@@ -9,7 +9,7 @@ ENV         KOTLIN_VERSION=1.3.30
 ENV         KOTLIN_HOME=/usr/local/kotlin
 
 RUN         cd  /tmp && \
-            wget -q -k "https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip"  && \
+            wget -q "https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip"  && \
             unzip "kotlin-compiler-${KOTLIN_VERSION}.zip" && \
             mkdir -p "${KOTLIN_HOME}" && \
             mv "/tmp/kotlinc/bin" "/tmp/kotlinc/lib" "${KOTLIN_HOME}" && \
