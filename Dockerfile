@@ -11,5 +11,5 @@ RUN         wget https://github.com/JetBrains/kotlin/releases/download/v1.3.30/k
             rm -f kotlinc/bin/*.bat
 ENV         PATH $PATH:./kotlinc/bin
 
-CMD         ["kotlinc"]
+CMD         ["kotlinc -version"]
 
