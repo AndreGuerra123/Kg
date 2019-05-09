@@ -6,14 +6,12 @@ LABEL       GRADLE_VERSION="5.3.1"
 LABEL       ARANGODB_VERSION="3.4.4"
 LABEL       JDK="8"
 
-//Adds Kotlin
 RUN         wget https://github.com/JetBrains/kotlin/releases/download/v1.3.30/kotlin-compiler-1.3.30.zip && \
             unzip kotlin-compiler-*.zip && \
             rm kotlin-compiler-*.zip && \
             rm -f kotlinc/bin/*.bat
 ENV         PATH $PATH:./kotlinc/bin
 
-// Adds ArangoDB
 ENV ARANGO_VERSION 3.4.4
 ENV ARANGO_URL https://download.arangodb.com/arangodb34/DEBIAN/amd64
 ENV ARANGO_PACKAGE arangodb3_${ARANGO_VERSION}-1_amd64.deb
