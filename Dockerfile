@@ -4,6 +4,7 @@ LABEL       MAINTAINER="Andre Guerra <guerraandre@hotmail.com>"
 LABEL       KOTLIN_VERSION="1.3.30"
 LABEL       GRADLE_VERSION="5.3.1"
 LABEL       ARANGODB_VERSION="3.4.4"
+LABEL       JANUSGRAPHDB_VERSION="0.1.1"
 LABEL       JDK="8"
 
 RUN         wget https://github.com/JetBrains/kotlin/releases/download/v1.3.30/kotlin-compiler-1.3.30.zip && \
@@ -51,3 +52,13 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 8529
 CMD ["arangod"]
+
+ENV JANUSGRAPH_VERSION=0.1.1
+RUN \
+	apt-get install unzip -y
+RUN \
+	mkdir /home/janusgraph &&\
+	cd /home/janusgraph &&\
+	wget https://github.com/JanusGraph/janusgraph/releases/download/v$JANUSGRAPH_VERSION/janusgraph-$JANUSGRAPH_VERSION-hadoop2.zip &&\
+	unzip janusgraph-$JANUSGRAPH_VERSION-hadoop2.zip -d /home/janusgraph &&\
+	ln -s /home/janusgraph/janusgraph-${JANUSGRAPH_VERSION}-hadoop2 /home/janusgraph/janusgraph
