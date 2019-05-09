@@ -1,5 +1,7 @@
 FROM        gradle:5.3.1-jdk8-alpine
 
+USER root
+
 LABEL       MAINTAINER="Andre Guerra <guerraandre@hotmail.com>"
 LABEL       KOTLIN_VERSION="1.3.30"
 LABEL       GRADLE_VERSION="5.3.1"
@@ -62,3 +64,5 @@ RUN \
 	wget https://github.com/JanusGraph/janusgraph/releases/download/v$JANUSGRAPH_VERSION/janusgraph-$JANUSGRAPH_VERSION-hadoop2.zip &&\
 	unzip janusgraph-$JANUSGRAPH_VERSION-hadoop2.zip -d /home/janusgraph &&\
 	ln -s /home/janusgraph/janusgraph-${JANUSGRAPH_VERSION}-hadoop2 /home/janusgraph/janusgraph
+	
+	
