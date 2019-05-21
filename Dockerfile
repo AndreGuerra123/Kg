@@ -16,7 +16,7 @@ RUN         wget https://github.com/JetBrains/kotlin/releases/download/v1.3.30/k
 ENV         PATH $PATH:./kotlinc/bin
 
 # Installing ArangoDB
-RUN         apt-get install git-core build-essential libssl-dev libjemalloc-dev cmake libldap2-dev
+RUN         apk add --no-cache git-core build-essential libssl-dev libjemalloc-dev cmake libldap2-dev
 
 
 
