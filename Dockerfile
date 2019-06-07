@@ -1,19 +1,16 @@
 FROM        gradle:5.3.1-jdk8-alpine
 
-USER root
+USER        root
+RUN         apk add --no-cache bash
 
-LABEL       MAINTAINER="Andre Guerra <guerraandre@hotmail.com>"
-LABEL       KOTLIN_VERSION="1.3.30"
-LABEL       GRADLE_VERSION="5.3.1"
-LABEL       ARANGODB_VERSION="3.4.4"
-LABEL       JDK="8"
+ENV         KOTLIN_VERSION="1.3.31"
 
-# Installing Kotlin
-RUN         wget https://github.com/JetBrains/kotlin/releases/download/v1.3.30/kotlin-compiler-1.3.30.zip && \
-            unzip kotlin-compiler-*.zip && \
-            rm kotlin-compiler-*.zip && \
+RUN         wget https://github.com/JetBrains/kotlin/releases/download/v$KOTLIN_VERSION/kotlin-compiler-$KOTLIN_VERSION.zip && \
+            unzip kotlin-compiler-$KOTLIN_VERSION.zip && \
+            rm kotlin-compiler-$KOTLIN_VERSION.zip && \
             rm -f kotlinc/bin/*.bat
 ENV         PATH $PATH:./kotlinc/bin
+RUN         kotlinc -version
 
 
 
